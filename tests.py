@@ -121,3 +121,43 @@ class TestBooksCollector:
         books_collector.delete_book_from_favorites(second_book)
         favorites = books_collector.get_list_of_favorites_books()
         assert len(favorites) == 1 and favorites[0] == first_book
+
+
+    # добавленные тесты
+    # получаем список избранных книг
+    def test_get_list_of_favorites_books(self, collection_five_books):
+        collection_five_books.add_book_in_favorites('звездные воины')
+        collection_five_books.add_book_in_favorites('Коралина')
+        assert collection_five_books.get_list_of_favorites_books() == ['звездные воины', 'Коралина']
+
+
+    #получаем жанр книги по имени
+    
+   
+    def test_get_book_genre_by_name(self, books_collector):
+        name = 'американский пирог'
+        genre = 'Комедии'
+        books_collector.add_new_book(name)
+        books_collector.set_book_genre(name, genre)
+        books_collector.get_book_genre(name) == genre
+        assert books_collector.get_book_genre('американский пирог') == 'Комедии'
+
+    def test_get_book_genre_by_name2(self, collection_five_books):
+        assert collection_five_books.get_book_genre('звездные воины') == 'Фантастика'
+    
+           
+   
+   #получаем словарь books_genre
+    def test_get_books_genre_dict(self, collection_five_books):
+        
+        assert collection_five_books.get_books_genre() 
+
+
+    
+    def test_get_books_genre_dict2(self, books_collector):
+        name = 'american pie'
+        genre = 'Комедии'
+        books_collector.add_new_book(name)
+        books_collector.set_book_genre(name, genre)
+        books_collector.get_book_genre(name) == genre
+        assert books_collector.get_books_genre() 
